@@ -11,7 +11,7 @@
       document.body.style.overflow = "hidden";
 
       const steps = document.querySelectorAll(".step");
-      document.addEventListener("mousewheel", (e) => {
+      const mouseWheelHandler = (e) => {
         const activeStep = document.querySelector(".step--active");
         const activeStepIndex = [...steps].indexOf(activeStep);
 
@@ -29,7 +29,9 @@
           document.body.style.overflow = "auto";
           flag = false;
         }
-      });
+      };
+      document.addEventListener("mousewheel", mouseWheelHandler);
+      document.addEventListener("changedTouches", mouseWheelHandler);
     }
   };
   document.addEventListener("scroll", scrollHandler);
